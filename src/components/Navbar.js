@@ -12,6 +12,12 @@ function Navbar() {
           <Link className='text-dark nav-link' to="/">Home</Link>
           </button>
         </li>
+
+        <li className="nav-item me-4">
+        <button>
+            <Link className='text-dark nav-link' to="/Todo">Add Task</Link>
+            </button>
+        </li>
         
         <li className="nav-item me-4">
         <button>
@@ -23,6 +29,7 @@ function Navbar() {
             <Link className='text-dark nav-link' to="/register">Register</Link>
             </button>
         </li>
+     
       </ul>
       </div>
     </nav>
