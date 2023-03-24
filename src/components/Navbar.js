@@ -18,6 +18,11 @@ function Navbar() {
             <Link className='text-dark nav-link' to="/Todo">Add Task</Link>
             </button>
         </li>
+        <li className="nav-item me-4">
+        <button>
+            <Link className='text-dark nav-link' to="/todolist">Todo Task</Link>
+            </button>
+        </li>
         
         <li className="nav-item me-4">
         <button>
