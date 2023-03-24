@@ -1,10 +1,10 @@
 import React from 'react';
-
+import DeleteTodo from './Todo/Delete';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import './App.css';
 import AddTodo from './Todo/AddTodo';
 import TodoList from './Todo/TodoList';
-
+import UpdateTodo from './Todo/updatetodo';
 import Login from './Authentication/Login';
 import Navbar from './Navbar';
 import Register from './Authentication/Signup';
@@ -22,6 +22,8 @@ export default function App() {
     <Route path ="/Register" element={<Register />} />
     <Route path ="/Todo" element={<AddTodo/>} />
     <Route path ="/todolist" element={<TodoList/>} />
+    <Route path ="/update" element={<UpdateTodo/>} />
+    <Route path ="/delete" element={<DeleteTodo/>} />
 
 
     </Routes>
