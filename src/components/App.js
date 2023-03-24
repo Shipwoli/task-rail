@@ -5,6 +5,7 @@ import './App.css';
 
 import Login from './Authentication/Login';
 import Navbar from './Navbar';
+import Register from './Authentication/Signup';
 //import TodoPage from './TodoPage';
 //import TodoForm from './TodoForm';
 
@@ -16,6 +17,7 @@ export default function App() {
 
     <Routes>
     <Route path="/login" element={<Login />} />
+    <Route path ="/Register" element={<Register />} />
 
 
     </Routes>
