@@ -29,7 +29,7 @@ const UpdateTodo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // make API call to update the todo item with the new values
-    fetch(`https://example.com/api/todos/${id}`, {
+    fetch(`https://todo-app-odjv.onrender.com/todos/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         title: title,

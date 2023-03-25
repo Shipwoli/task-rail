@@ -11,7 +11,7 @@ const Register = () => {
     e.preventDefault();
     
     // make API call to register user with the provided information
-    fetch('https://example.com/api/register', {
+    fetch('https://todo-app-odjv.onrender.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

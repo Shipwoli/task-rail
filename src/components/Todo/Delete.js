@@ -10,7 +10,7 @@ const DeleteTodo = () => {
 
   const handleDelete = () => {
     // make API call to delete the todo item with the specified ID
-    fetch(`https://example.com/api/todos/${id}`, {
+    fetch(`https://todo-app-odjv.onrender.com/todos/${id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())

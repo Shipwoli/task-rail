@@ -10,7 +10,7 @@ const AddTodo = () => {
     e.preventDefault();
     
     // make API call to add new todo item with the provided information
-    fetch('https://example.com/api/todos', {
+    fetch('https://todo-app-odjv.onrender.com/todos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ const TodoList = () => {
 
   useEffect(() => {
     // make API call to get all todo items
-    fetch('https://example.com/api/todos')
+    fetch('https://todo-app-odjv.onrender.com/todos')
       .then((response) => response.json())
       .then((data) => {
         setTodos(data);

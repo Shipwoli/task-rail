@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('https://todo-app-odjv.onrender.com/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
