@@ -1,97 +1,63 @@
 import React, { useState } from 'react';
-import { Card, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
 
-const Register = () => {
+function Register() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // make API call to register user with the provided information
-    fetch('https://todo-app-odjv.onrender.com/users', {
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // Create a new user object
+    const user = { username, email, password };
+
+    // Send a POST request to the server
+    fetch('http://localhost:3000/users', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        password,
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Registration failed');
-        }
-        // handle successful registration here, e.g. redirect to login page
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    .then(response => {
+      // Handle successful registration
+      if (response.ok) {
+        setRegistrationSuccess(true);
+      }
+    })
+    .catch(error => {
+      // Handle registration error
+      console.error(error);
+    });
+  }
 
   return (
     <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-6 col-md-8">
-          <Card>
-            <div className="card-header">
-              Register
-            </div>
-            <div className="card-body">
-              <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                  <Label for="username">Username</Label>
-                  <Input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Enter your username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="email">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="password">Password</Label>
-                  <Input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </FormGroup>
-                <Button type="submit" color="primary" block>
-                  Register
-                </Button>
-              </Form>
-            </div>
-            <div className="card-footer text-center">
-              <div className="mb-3">Already have an account?</div>
-              <Link to="/login" className="btn btn-secondary btn-block">
-                Go to Login
-              </Link>
-            </div>
-          </Card>
-        </div>
-      </div>
+      <h1>Thank you for Signing Up</h1>
+      {registrationSuccess ? (
+        <>
+          <p>Registration successful. Please <Link to="/login">log in</Link>.</p>
+        </>
+      ) : (
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formUsername">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+          </Form.Group>
+          <Form.Group controlId="formEmail">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} />
+          </Form.Group>
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          </Form.Group>
+          <Button variant="primary" type="submit">Register</Button>
+        </Form>
+      )}
     </div>
   );
-};
+}
 
 export default Register;

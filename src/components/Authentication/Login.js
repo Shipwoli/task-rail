@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { Card, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Card, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://todo-app-odjv.onrender.com/users/login', {
+      const response = await fetch('http://localhost:3000/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -19,6 +19,10 @@ const Login = () => {
       });
       const data = await response.json();
       console.log(data); // handle server response here
+      if (data.token) {
+        setShowAlert(true); // show success message
+        // you can store the token in local storage or cookies here
+      }
     } catch (error) {
       console.error(error);
     }
@@ -33,6 +37,7 @@ const Login = () => {
               Login
             </div>
             <div className="card-body">
+              {showAlert && <Alert color="success">Logged in successfully!</Alert>}
               <Form onSubmit={handleSubmit}>
                 <FormGroup>
                   <Label for="email">Username / Email</Label>
