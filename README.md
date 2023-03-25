@@ -21,6 +21,13 @@ To start the application, run the following command:
             npm start
 
 This will start the development server and open the application in your default web browser.
+## Features
+- Add a task to the list
+- Edit a task
+- Delete a task
+- Mark a task as completed
+- Filter tasks by status (completed or uncompleted)
+- create a user and authenticate a user
 
 ## Usage
 
